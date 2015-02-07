@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+    driver: 
+      network:
+      - ["private_network", {ip: "192.168.33.30" }]
+  - name: centos-6.5
+    driver:
+      network:
+      - ["private_network", {ip: "192.168.33.31" }]
+
+
+suites:
+  - name: default
+    run_list:
+      - recipe[awesome_app::default]
+    attributes:
